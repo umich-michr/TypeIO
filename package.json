@@ -1,6 +1,6 @@
 {
   "name": "typeio",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
@@ -39,6 +39,6 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://michrapps.med.umich.edu/scm/git/michr-typeahead"
+    "url": "https://github.com/michr-cri/TypeIO"
   }
 }
