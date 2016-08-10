@@ -1,6 +1,6 @@
 {
   "name": "typeio",
-  "version": "1.0.3",  
+  "version": "1.0.3",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "Raden Tonev <rtonev@umich.edu>",
     "Aalap Doshi <aalapd@med.umich.edu>"
   ],
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "browserify": "^13.0.1",
     "browserify-istanbul": "^0.2.1",
