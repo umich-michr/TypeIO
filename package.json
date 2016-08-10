@@ -1,6 +1,6 @@
 {
   "name": "typeio",
-  "version": "1.0.3", 
+  "version": "1.0.3",  
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
