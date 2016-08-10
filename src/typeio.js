@@ -5,7 +5,9 @@
         require('typeahead.js');
     }
 
-    $.fn.typeIO = function(options, dataset) {
+    $.fn.typeIO = function() {
+
+        var options = arguments[0];
         var $resultsContainer;
         var $queryInput = $(this);
 
@@ -22,35 +24,52 @@
             default:
                 break;
         }
+        var datasets = null;
+        if (arguments.length > 1) {
+            datasets = [].slice.call(arguments, 1);
+        }
 
-        if (!dataset) {
+        if (!datasets) {
             throw new Error('Please provide a data set');
         }
 
-        if (dataset.resultsContainer) {
-            $resultsContainer= $(dataset.resultsContainer);
-        } else {
-            throw new Error('Please provide results container');
+        if (!options.mode) {
+            options.mode = 'multi-select';
         }
 
-        if (dataset.useDefaultMatcher) {
-            if (dataset.source) {
-                validateData(dataset.source);
-                dataset.source = substringMatcher(dataset.source);
+        if (options.resultsContainer) {
+            $resultsContainer = $(options.resultsContainer);
+        } else {
+            var formParents  = $queryInput.closest('form');
+            if (formParents.length === 0) {
+                throw new Error('Please provide results container');
             } else {
-                throw new Error('Please provide data source');
+                $resultsContainer = $(formParents[0]);
             }
         }
 
-        if (dataset.initialResults) {
-            validateData(dataset.initialResults);
-            initializeTypeahead(dataset.initialResults);
+
+        if (!options.customMatcher) {
+            for (var datasetIndex=0; datasetIndex<datasets.length; datasetIndex++) {
+                var dataset = datasets[datasetIndex];
+                if (dataset.source) {
+                    validateData(dataset.source);
+                    dataset.source = substringMatcher(dataset.source);
+                } else {
+                    throw new Error('Please provide data source');
+                }
+            }
+        }
+
+        if (options.initialResults) {
+            validateData(options.initialResults);
+            initializeTypeahead(options.initialResults);
         } else {
             initializeTypeahead([]);
 
         }
 
-        $queryInput.typeahead(options, dataset);
+        $queryInput.typeahead(options, datasets);
 
         $queryInput.bind('typeahead:select', makeSelection);
 
@@ -94,14 +113,14 @@
 
         function makeSelection(event, suggestion) {
 
-            if (!dataset.inlineSingleSelect) {
+            if (options.mode !== 'inline-single-select') {
                 var removeText = 'Remove';
-                if (dataset.singleValue) {
+                if (options.mode === 'single-select') {
                     removeText = 'Change';
                 }
                 $resultsContainer.find('#selectTypeaheadFormResults').append('<option selected value="'+suggestion.value+'"></option>');
                 $resultsContainer.find('#ulTypeaheadResults').append('<li id="liTypeaheadSelected-'+suggestion.value+'"><span class="display-text">'+suggestion.text+'</span><a id="aTypeaheadSelected-'+suggestion.value+'"href="javascript: void(0);" class="typeahead-remove-selected-term"><span class="fa fa-close" aria-hidden="true"></span><span class="remove-label">'+removeText+'</span></a></li>');
-                if (dataset.singleValue) {
+                if (options.mode === 'single-select') {
                     $queryInput.addClass('hide');
                 }
                 $queryInput.typeahead('val', '');
@@ -121,10 +140,10 @@
 
         function createListInsideContainer() {
             $resultsContainer.addClass('tt-added-results');
-            if (!dataset.inlineSingleSelect) {
+            if (options.mode !== 'inline-single-select') {
                 $resultsContainer.append('<ul data-tt-'+$queryInput.attr('id')+' id="ulTypeaheadResults"></ul>');
             }
-            $resultsContainer.append('<select aria-hidden="true" class="hide" multiple data-tt-'+ $queryInput.attr('id')+' id="selectTypeaheadFormResults" name="'+dataset.name+'"></select>');
+            $resultsContainer.append('<select aria-hidden="true" class="hide" multiple data-tt-'+ $queryInput.attr('id')+' id="selectTypeaheadFormResults" name="'+options.name+'"></select>');
         }
 
         $resultsContainer.on('click','a.typeahead-remove-selected-term', function (event) {
@@ -155,7 +174,7 @@
                     $(selectables[0]).trigger('click');
                 }
             } else if (event.which === 8) {
-                if (dataset.inlineSingleSelect) {
+                if (options.mode === 'inline-single-select') {
                     clearResultsContainer();
                     $queryInput.typeahead('val', '');
                 }
@@ -182,9 +201,9 @@
                 $.each($resultsContainer.find('#selectTypeaheadFormResults option'), function(index, result){
                     typeaheadSelectedTermValues.push(result.value);
                 });
-                if (dataset.matcherType === 'startsWith') {
+                if (options.matcherType === 'startsWith') {
                     query = '^' + query;
-                } else if (dataset.matcherType === 'endsWith') {
+                } else if (options.matcherType === 'endsWith') {
                     query = query + '$';
                 }
 
