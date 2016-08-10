@@ -1,0 +1,101 @@
+/**
+ *
+ * =======================================================================
+   Font Sizes
+ * =======================================================================
+ */
+
+$one-rem:18; //base-font-size in px
+$base-font-size: ($one-rem / 16); //base font size in proportion to default browser font size
+$base-line-height:1.90; //165%;
+
+// Typographic scale
+$h1-font-size:1.6180;
+$h2-font-size:1.4382;
+$h3-font-size:1.2222;
+$h4-font-size:1.1111;
+
+//Forms
+$form-help-text-font-size: 0.850;
+$form-legend-font-size: 1.2222;
+
+//Badges
+$badge-font-size:0.850;
+/**
+ *
+ * =======================================================================
+   Colors
+ * =======================================================================
+ */
+
+//Primary colors. Mostly applied in buttons
+$primary-color: #366caf; //blue
+$secondary-color: #FF9800; //orange
+$special-color: purple; //purple
+$accent-color: #3f51b5;
+
+//Institution specific colors. Each institution can customize their colors here.
+$institution-primary-color: #00274c;
+$institution-secondary-color: #ffcb05;
+
+//Font colors
+$header-font-color:#222; // Default color applied to all headers
+$h1-font-color: #222; //h1 font color overrides default header color
+$h4-font-color: #666; //h1 font color overrides default header color
+$base-font-color:#333;
+$secondary-font-color: #666;
+$small-font-color: #555;
+$link-font-color: #0362cf;
+$link-hover-color: $primary-color;
+$success-font-color: green;
+$error-font-color: #de1a0c;
+$feedback-block-font-color: #484848;
+$badge-font-color: #ffffff;
+$badge-link-hover-font-color:$secondary-color;
+
+// Background colors
+$neutral-background-color:#f2f2f2; //gray background
+$special-background-color:#D7E5F1; //light blue background
+$success-background-color:#d4ece6; //light green background color for success feedback blocks
+$error-background-color:#f8d0c8; //light red background color for error feedback blocks
+$info-background-color:#ffeebf; //yellow background color for info feedback blocks
+$badge-background-color: $success-font-color; //green background color for badges
+$menu-badge-background-color: $success-font-color; //background color for menu badges
+$field-background-color: #fff; //field background color
+$check-radio-background-color: $neutral-background-color; // Background color for checkboxes and radio buttons
+$message-background-color:$neutral-background-color; //message background color
+$message-background-color-alternate:$special-background-color;
+
+// Border colors
+$border-color:#ccc;
+$form-field-border-color:#999;
+$form-field-focus-border-color:$primary-color;
+
+//Overlay colors
+$overlay-color:rgba(89, 141, 204, 0.95);
+
+/**
+ *
+ * =======================================================================
+   Font families
+ * =======================================================================
+ */
+$primary-font-family: "Roboto",Arial,sans-serif;
+$header-font-family:  "Roboto",Arial,sans-serif;
+$button-font-family:  "Helvetica",Arial,sans-serif;
+
+
+// Border radius
+$border-radius: 5px;
+$card-border-radius: 2px;
+
+/**
+ *
+ * =======================================================================
+   Responsive Breakpoints (Min. widths)
+ * =======================================================================
+ */
+$sm-screen-breakpoint: 17.777em;
+$md-screen-breakpoint: 42.666em;
+$lg-screen-breakpoint: 56.888em;
+$xl-screen-breakpoint: 71.111em;

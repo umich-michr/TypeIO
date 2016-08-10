@@ -1,0 +1,44 @@
+{
+  "name": "TypeIO",
+  "version": "1.0.2",
+  "description": "A custom multiselect UI widget based on twitter type ahead plugin",
+  "main": "dist/typeio.js",
+  "scripts": {
+    "build": "npm run clean && npm run browserify && npm run sass && npm run jshint",
+    "build:debug": "npm run clean && npm run sass && npm run jshint && cp ./src/typeio.js ./dist/typeio.js",
+    "clean": "./node_modules/rimraf/bin.js dist/* *.log* ",
+    "browserify": "./node_modules/browserify/bin/cmd.js ./src/** | uglifyjs > ./dist/typeio.min.js",
+    "browserify:debug": "./node_modules/browserify/bin/cmd.js --debug ./src/typeio.js -o ./dist/typeio.js",
+    "sass": "mkdir -p dist/assets/styles && sass src/assets/styles/styles.scss dist/assets/styles/styles.css && rsync -a src/assets/ dist/assets/ --exclude styles",
+    "jshint": "./node_modules/jshint/bin/jshint ./src/**",
+    "test": "./node_modules/karma/bin/karma start ./karma.conf.js --singleRun=true"
+  },
+  "authors": [
+    "Mel Gunal <gunalmel@med.umich.edu>",
+    "Tianyun Zhang <tianyunz@med.umich.edu>",
+    "Raden Tonev <rtonev@umich.edu>",
+    "Aalap Doshi <aalapd@med.umich.edu>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "browserify-istanbul": "^0.2.1",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.2",
+    "karma": "^1.1.0",
+    "karma-browserify": "^5.0.5",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-junit-reporter": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "rimraf": "^2.5.2",
+    "sass": "^0.5.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://michrapps.med.umich.edu/scm/git/michr-typeahead"
+  }
+}

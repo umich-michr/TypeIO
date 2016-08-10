@@ -1,0 +1,164 @@
+// font size in rem and px for fallback
+@mixin font-size($size) {
+	font-size: ($size) + rem;
+	font-size: ($size * $one-rem) + px;
+}
+
+// margin-bottom in rem and px for fallback
+@mixin margin-bottom($size) {
+	margin-bottom: ($size) + rem;
+	margin-bottom: ($size * $one-rem) + px;
+}
+
+//function to calculate margin-bottom for type elements
+@function type-margin-calculator($font-size){
+	@return $base-font-size * $base-line-height / $font-size;
+}
+
+// margin-top in rem and px for fallback
+@mixin margin-top($size) {
+	margin-top: ($size) + rem;
+	margin-top: ($size * $one-rem) + px;
+}
+
+// margin-left in rem and px for fallback
+@mixin margin-left($size) {
+	margin-left: ($size) + rem;
+	margin-left: ($size * $one-rem) + px;
+}
+
+// margin-right in rem and px for fallback
+@mixin margin-right($size) {
+	margin-right: ($size) + rem;
+	margin-right: ($size * $one-rem) + px;
+}
+
+// padding-top in rem and px for fallback
+@mixin padding-top($size) {
+	padding-top: ($size) + rem;
+	padding-top: ($size * $one-rem) + px;
+}
+
+// padding-left in rem and px for fallback
+@mixin padding-left($size) {
+	padding-left: ($size) + rem;
+	padding-left: ($size * $one-rem) + px;
+}
+
+// padding-top in rem and px for fallback
+@mixin padding-bottom($size) {
+	padding-bottom: ($size) + rem;
+	padding-bottom: ($size * $one-rem) + px;
+}
+
+// padding-left in rem and px for fallback
+@mixin padding-right($size) {
+	padding-right: ($size) + rem;
+	padding-right: ($size * $one-rem) + px;
+}
+
+// all padding in rem and px for fallback
+@mixin padding($size) {
+	@include padding-top($size);
+	@include padding-right($size);
+	@include padding-bottom($size);
+	@include padding-left($size);
+}
+
+//horizontal center a div
+@mixin center() {
+	margin-left: auto;
+	margin-right: auto;
+}
+// border-radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+//utility class to add grid styling to individual elements so that we do not have to add grid-row classes in select elements
+@mixin grid-container{
+/*
+	display: -webkit-flex;
+	-webkit-flex-flow: row wrap;
+	display: -ms-flexbox;
+	-ms-flex-flow: row wrap;
+*/
+}
+//utility class to add padding inside a grid-container
+@mixin grid-container-elements($padding){
+/*
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: ($padding) + rem;
+*/
+}
+
+
+//transition
+@mixin transition($property, $duration, $timing-function){
+	 -webkit-transition: $property $duration $timing-function;
+       -o-transition: $property $duration $timing-function;
+          transition: $property $duration $timing-function;
+}
+//transition timing
+@mixin transition-timing-function($transition-function) {
+	-webkit-transition-timing-function: $transition-function;
+	   -o-transition-timing-function: $transition-function;
+	      transition-timing-function: $transition-function;
+}
+//transition duration
+@mixin transition-duration($transition-duration) {
+	-webkit-transition-duration: $transition-duration;
+       -o-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+//transition property
+@mixin transition-property($property) {
+	-webkit-transition-property: $property;
+       -o-transition-property: $property;
+          transition-property: $property;
+}
+
+
+//Box shadow
+@mixin box-shadow(){
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+
+//Hover Box shadow
+@mixin hvr-box-shadow(){
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 0, 0, 0.20);
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 0, 0, 0.20);
+	-moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 0, 0, 0.20);
+}
+
+@mixin flex-display(){
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin no-hyphens(){
+	-webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/*Force word break in long words*/
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}

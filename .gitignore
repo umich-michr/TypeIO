@@ -1,0 +1,9 @@
+node_modules
+dist
+*.swp
+.DS_Store
+/**.DS_Store
+.idea/
+.sass-cache
+typeio-*.tgz
+TESTS*
