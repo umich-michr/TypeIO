@@ -169,8 +169,8 @@
         $queryInput.bind('keydown', function(event) {
             var selectables = $(this).siblings('.tt-menu').find('.tt-selectable');
             if(event.which === 13) {
-                event.preventDefault();
                 if (selectables.length > 0){
+                    event.preventDefault();
                     $(selectables[0]).trigger('click');
                 }
             } else if (event.which === 8) {
