@@ -4,10 +4,10 @@
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
-    "build": "npm run clean && npm run browserify && npm run sass && npm run jshint",
+    "build": "npm run clean && npm run sass && npm run jshint && uglifyjs ./src/typeio.js > ./dist/typeio.min.js",
     "build:debug": "npm run clean && npm run sass && npm run jshint && cp ./src/typeio.js ./dist/typeio.js",
     "clean": "./node_modules/rimraf/bin.js dist/* *.log* ",
-    "browserify": "./node_modules/browserify/bin/cmd.js ./src/** | uglifyjs > ./dist/typeio.min.js",
+    "browserify": "./node_modules/browserify/bin/cmd.js ./src/**/*.js | uglifyjs > ./dist/typeio.min.js",
     "browserify:debug": "./node_modules/browserify/bin/cmd.js --debug ./src/typeio.js -o ./dist/typeio.js",
     "sass": "mkdir -p dist/assets/styles && sass src/assets/styles/styles.scss dist/assets/styles/styles.css && rsync -a src/assets/ dist/assets/ --exclude styles",
     "jshint": "./node_modules/jshint/bin/jshint ./src/**",
