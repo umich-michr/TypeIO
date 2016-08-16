@@ -13,13 +13,26 @@
     "jshint": "./node_modules/jshint/bin/jshint ./src/**",
     "test": "./node_modules/karma/bin/karma start ./karma.conf.js --singleRun=true"
   },
-  "authors": [
-    "Mel Gunal <gunalmel@med.umich.edu>",
-    "Tianyun Zhang <tianyunz@med.umich.edu>",
-    "Raden Tonev <rtonev@umich.edu>",
-    "Aalap Doshi <aalapd@med.umich.edu>"
+  "author": {
+    "name": "Michigan Institute for Clinican & Health Research",
+    "url": "https://www.michr.umich.edu"
+  },
+  "contributors": [
+    {
+      "name": "Melih Gunal"
+    },
+    {
+      "name": "Raden Tonev"
+    },
+    {
+      "name": "Tianyun Zhang"
+    },
+    {
+      "name": "Aalap Doshi"
+    }
   ],
   "license": "SEE LICENSE IN LICENSE",
+  "keywords": ["autocomplete", "typeahead", "multiselect", "dropdown", "select", "search", "input", "form"],
   "devDependencies": {
     "browserify": "^13.0.1",
     "browserify-istanbul": "^0.2.1",
