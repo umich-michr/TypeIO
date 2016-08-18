@@ -118,7 +118,7 @@ Please see below the additional options that TypeIO supports:
 
 ### Datasets
 
-The plugin takes one or more data set parameters. These are working exactly the way one would expect them to work in Twitter's typeahead (more info [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets). *display* and *source* attributes are required as part of a data-source object.
+The plugin takes one or more data set parameters. These are working exactly the way one would expect them to work in Twitter's typeahead (more info [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets).) *display* and *source* attributes are required as part of a data-source object.
 
 ### Data Format
 The source option for each data soruce of the plugin requires that an array of objects be passed to the initializer. The objects should have `text` and `value` attributes. The *text* is used for display purposes, while the *value* is used if a form submission should occur. For example, a valid source array might like like the one shown below:
