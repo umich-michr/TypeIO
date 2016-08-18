@@ -1,6 +1,6 @@
 {
   "name": "typeio",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "test": "./node_modules/karma/bin/karma start ./karma.conf.js --singleRun=true"
   },
   "author": {
-    "name": "Michigan Institute for Clinican & Health Research",
+    "name": "Michigan Institute for Clinical & Health Research",
     "url": "https://www.michr.umich.edu"
   },
   "contributors": [
