@@ -4,8 +4,8 @@
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
-    "build": "npm run clean && npm run sass && npm run jshint && uglifyjs ./src/typeio.js > ./dist/typeio.min.js",
-    "build:debug": "npm run clean && npm run sass && npm run jshint && cp ./src/typeio.js ./dist/typeio.js",
+    "build:uglify": "npm run clean && npm run sass && npm run jshint && uglifyjs ./src/typeio.js > ./dist/typeio.min.js",
+    "build": "npm run clean && npm run sass && npm run jshint && cp ./src/typeio.js ./dist/typeio.js",
     "clean": "./node_modules/rimraf/bin.js dist/* *.log* ",
     "browserify": "./node_modules/browserify/bin/cmd.js ./src/**/*.js | uglifyjs > ./dist/typeio.min.js",
     "browserify:debug": "./node_modules/browserify/bin/cmd.js --debug ./src/typeio.js -o ./dist/typeio.js",
@@ -49,7 +49,10 @@
     "sass": "^0.5.0",
     "watchify": "^3.7.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jquery": ">=1.7",
+    "typeahead.js": "^0.11.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/michr-cri/TypeIO"
