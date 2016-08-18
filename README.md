@@ -2,7 +2,7 @@
 
 TypeIO.js is an extension to Twitter's typeahead.js, which provides a multiselect functionality on top of a flexible typeahead widget.
 
- # Features
+# Features
  * Ability to have both single and multipliple selection
  * Built-in suggestion matcher
  * Mobile-responsiveness
