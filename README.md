@@ -3,20 +3,30 @@
 TypeIO.js is an extension to Twitter's typeahead.js, which provides a multiselect functionality on top of a flexible typeahead widget.
 
 # Features
- * Ability to have both single and multipliple selection
+ * Ability to have both single and multiple selection
  * Built-in suggestion matcher
  * Mobile-responsiveness
- * Accesibility
+ * Accessibility
  * CSS included in bundle
  * All of Twitter typeahead.js' functionality
 
 # Getting Started
 
+For examples see https://michr-cri.github.io/
+
 **Install Using NPM**
 ```
 npm install typeio
 ```
-**Direct Download:** [typeio.js](https://michr-cri.github.io/typeio.js)
+
+**Using good old js tags**
+```
+<script src="jquery.min.js"></script>
+<script src="typeahead.jquery.min.js"></script>
+<script src="typeio.js"></script>
+<link rel="stylesheet" href="assets/styles-for-all.css" media="screen"/>
+<link rel="stylesheet" href="assets/michr-cri-styles.css" media="screen"/>
+```
 
 # Documentation
 
@@ -61,7 +71,7 @@ $('#inputUsedForTypeIO').typeIO('toggleDisabledResultsContainer');
 
 ### Initialization
 
-In order to initialize TypeIO, provide `input[type="text"]` and an optional `results container` block element (e.g. div.) In the example below, the typeIO plugin is initialized uzing an input field with an id=exampleInput and a results container with id=divResults
+In order to initialize TypeIO, provide `input[type="text"]` and an optional `results container` block element (e.g. div.) In the example below, the typeIO plugin is initialized using an input field with an id=exampleInput and a results container with id=divResults
 
 
 Markup
@@ -88,7 +98,7 @@ $('#exampleInput').typeIO({
     name: 'States'
 },
 {
-    dispaly: 'text',
+    display: 'text',
     source: [{text:'Michigan', value:'MI'}, {text:'New York', value:'NY'}],
 });
 ```
@@ -101,7 +111,7 @@ Click [here](https://michr-cri.github.io/) to see a live demo of TypeIO.js in ac
 
 ###  Options
 
-TypeIO supports the same configuration as its underlying Twitter typeahead.js, plus some added options. Info on typeahead.js' documentetaion can be found [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md).
+TypeIO supports the same configuration as its underlying Twitter typeahead.js, plus some added options. Info on typeahead.js' documentation can be found [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md).
 
 Please see below the additional options that TypeIO supports:
 
@@ -109,7 +119,7 @@ Please see below the additional options that TypeIO supports:
 | Option        | Use           | Default Value  |
 | :-------------: |:-------------:| :-----:|
 | resultsContainer      | specifies the location of the selected value | The form containing the input used for TypeIO initialization  |
-| mode      | TypeIO can be initialized in one of tree working modes: `multi-select`, `single-select`, or `inline-single-select`. The multi-select mode allows the user to select multiple options to be added to the resultsContainer; single-select makes the input field hide when an option is selected and shows it again if the option is removed; inline-single-select is used to keep the selected option in the input field itself, reathar than in a separate resultsContainer| multi-select |
+| mode      | TypeIO can be initialized in one of tree working modes: `multi-select`, `single-select`, or `inline-single-select`. The multi-select mode allows the user to select multiple options to be added to the resultsContainer; single-select makes the input field hide when an option is selected and shows it again if the option is removed; inline-single-select is used to keep the selected option in the input field itself, rather than in a separate resultsContainer| multi-select |
 | initialResults| accepts list of pre-loaded selected results into the resultsContainer| |
 |customMatcher|if this option is set to *false*, a default suggestion matcher is provided, but if this options is set to *true*, the user must provide a custom one using the `matcher` option|false|
 | matcher| if the customMatcher option is set to *true*, the user can use the matcher option to provide a custom matcher function.|The default matcher function is shown in the *Suggestion Matching* section below|
@@ -121,7 +131,7 @@ Please see below the additional options that TypeIO supports:
 The plugin takes one or more data set parameters. These are working exactly the way one would expect them to work in Twitter's typeahead (more info [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets).) *display* and *source* attributes are required as part of a data-source object.
 
 ### Data Format
-The source option for each data soruce of the plugin requires that an array of objects be passed to the initializer. The objects should have `text` and `value` attributes. The *text* is used for display purposes, while the *value* is used if a form submission should occur. For example, a valid source array might like like the one shown below:
+The source option for each data source of the plugin requires that an array of objects be passed to the initializer. The objects should have `text` and `value` attributes. The *text* is used for display purposes, while the *value* is used if a form submission should occur. For example, a valid source array might like like the one shown below:
 
 ```
 $('#inputUsedForTypeIO').typeIO({
@@ -171,7 +181,7 @@ function substringMatcher(terms) {
             };
         }
 ```
-If the user wants to provide their own function instead, the `customMatcher` option should be set to true and the function should be passed to the `matcher` option. The new custom function should be following the same format as the default one. The built-in matcher was heavily influenced by the examples provided in Twitter Typeahead.js` documentation, since that pluging is the backbone of TypeIO.
+If the user wants to provide their own function instead, the `customMatcher` option should be set to true and the function should be passed to the `matcher` option. The new custom function should be following the same format as the default one. The built-in matcher was heavily influenced by the examples provided in Twitter Typeahead.js` documentation, since that plugin is the backbone of TypeIO.
 
 ### Under The Hood
 
