@@ -12,7 +12,7 @@ TypeIO.js is an extension to Twitter's typeahead.js, which provides a multiselec
 
 # Getting Started
 
-For examples see https://michr-cri.github.io/
+For examples see https://michr-cri.github.io/typeio
 
 **Install Using NPM**
 ```
