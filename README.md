@@ -25,7 +25,6 @@ npm install typeio
 <script src="typeahead.jquery.min.js"></script>
 <script src="typeio.js"></script>
 <link rel="stylesheet" href="assets/styles-for-all.css" media="screen"/>
-<link rel="stylesheet" href="assets/michr-cri-styles.css" media="screen"/>
 ```
 
 # Documentation
