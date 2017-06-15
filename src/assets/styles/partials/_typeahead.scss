@@ -1,3 +1,27 @@
+.tt-added-results ul{
+  padding-left: 0;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 fontello;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.typeahead-remove-selected-term {
+  text-decoration: none;
+}
+
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+  content: "\e800";
+}
+
 .typeahead-container{
   .tt-query {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

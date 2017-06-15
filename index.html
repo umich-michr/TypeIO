@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/typeahead.js/dist/typeahead.jquery.min.js"></script>
+    <script src="./dist/typeio.js"></script>
+    <link rel="stylesheet" href="./dist/assets/styles/typeio-styles.css" media="screen"/>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#inputStates').typeIO({
+                        hint: true,
+                        highlight: true,
+                        mode: 'inline-single-select',
+                        minLength: 0,
+                        name: 'states'
+                    },
+                    {
+                        limit:10,
+                        display: 'text',
+                        source:[{text:'Michigan', value:'MI'},{text:'California', value:'CA'}],
+                        templates: {
+                            suggestion: function(data) {
+                                return '<div>' + data.text + '</div>';
+                            }
+                        }
+                    });
+
+            $('#inputCountries').typeIO({
+                        hint: true,
+                        highlight: true,
+                        minLength: 1,
+                        name: 'countries',
+                        resultsContainer:'#divCountryResults'
+                    },
+                    {
+                        limit:10,
+                        display: 'text',
+                        source:[{text:'United States of America', value:'USA'},{text:'Bulgaria', value:'BGR'},{text:'Turkey', value:'TUR'},{text:'China', value:'CHN'},{text:'India', value:'IND'}],
+                        templates: {
+                            suggestion: function(data) {
+                                return '<div>' + data.text + '</div>';
+                            },
+                            notFound: [
+                                '<div class="empty-message">',
+                                'No results found',
+                                '</div>'
+                            ].join('\n')
+                        }
+                    });
+        });
+    </script>
+</head>
+<body>
+<h1>TypeIO.js</h1>
+<section id="sectionStates">
+    <strong>Inline Single Select Mode</strong> - selected option is kept in the input field. <br/><br/>
+    <form class="typeahead-container">
+        <input id="inputStates" />
+    </form>
+    <br />
+</section>
+<section id="sectionCountries">
+    <strong>Multi Select Mode</strong> -  selected option is kept in the input field. <br/><br/>
+    <form class="typeahead-container">
+        <input id="inputCountries" />
+        <div role="list" id="divCountryResults"></div>
+    </form>
+    <br />
+</section>
+</body>
+</html>

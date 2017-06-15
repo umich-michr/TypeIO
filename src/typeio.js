@@ -1,10 +1,25 @@
-(function() {
-    'use strict';
-
-    if (typeof exports === 'object') {
-        require('typeahead.js');
+function exportDependencies(jQuery, typeahead){
+    if(window){
+        window.$=jQuery;
+        window.jQuery=jQuery;
+        window.Bloodhound=typeahead;
     }
-
+}
+(function(root, factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define('typeio', [ 'jquery', 'typeahead.jquery' ], function(jQuery, typeahead) {
+            exportDependencies(jQuery,typeahead);
+            return factory(jQuery);
+        });
+    } else if (typeof exports === 'object') {
+        var jQuery = require('jquery');
+        exportDependencies(jQuery,require('typeahead.js'));
+        module.exports = factory(jQuery);
+    } else {
+        factory(root.jQuery);
+    }
+})(this, function($) {
     $.fn.typeIO = function() {
 
         var options = arguments[0];
@@ -47,7 +62,6 @@
                 $resultsContainer = $(formParents[0]);
             }
         }
-
 
         if (!options.customMatcher) {
             for (var datasetIndex=0; datasetIndex<datasets.length; datasetIndex++) {
@@ -94,20 +108,19 @@
         function toggleResultsContainerVisibility() {
             var id = $queryInput.attr('id');
             $.each($('ul[data-tt-'+id+']'), function(index, element) {
-                if($(element).hasClass('hide')) {
-                    $(element).removeClass('hide');
+                if($(element).is(':visible')) {
+                    $(element).hide();
                 } else {
-                    $(element).addClass('hide');
+                    $(element).show();
                 }
-
             });
         }
 
         function validateData(data) {
             $.each(data, function(index, dataItem) {
-               if (!dataItem.value || !dataItem.text) {
-                   throw new Error('Invalid data provided: ' + dataItem);
-               }
+                if (!dataItem.value || !dataItem.text) {
+                    throw new Error('Invalid data provided: ' + dataItem);
+                }
             });
         }
 
@@ -121,12 +134,12 @@
                 $resultsContainer.find('#selectTypeaheadFormResults').append('<option selected value="'+suggestion.value+'"></option>');
                 $resultsContainer.find('#ulTypeaheadResults').append('<li id="liTypeaheadSelected-'+suggestion.value+'"><span class="display-text">'+suggestion.text+'</span><a id="aTypeaheadSelected-'+suggestion.value+'"href="javascript: void(0);" class="typeahead-remove-selected-term"><span class="fa fa-close" aria-hidden="true"></span><span class="remove-label">'+removeText+'</span></a></li>');
                 if (options.mode === 'single-select') {
-                    $queryInput.addClass('hide');
+                    $queryInput.hide();
                 }
                 $queryInput.typeahead('val', '');
             } else {
-               $queryInput.typeahead('val', '');
-               $queryInput.typeahead('val', suggestion.text);
+                $queryInput.typeahead('val', '');
+                $queryInput.typeahead('val', suggestion.text);
                 $resultsContainer.find('#selectTypeaheadFormResults').html('<option selected value="'+suggestion.value+'"></option>');
             }
         }
@@ -143,7 +156,7 @@
             if (options.mode !== 'inline-single-select') {
                 $resultsContainer.append('<ul data-tt-'+$queryInput.attr('id')+' id="ulTypeaheadResults"></ul>');
             }
-            $resultsContainer.append('<select aria-hidden="true" class="hide" multiple data-tt-'+ $queryInput.attr('id')+' id="selectTypeaheadFormResults" name="'+options.name+'"></select>');
+            $resultsContainer.append('<select aria-hidden="true" style="display:none;" multiple data-tt-'+ $queryInput.attr('id')+' id="selectTypeaheadFormResults" name="'+options.name+'"></select>');
         }
 
         $resultsContainer.on('click','a.typeahead-remove-selected-term', function (event) {
@@ -152,7 +165,7 @@
             $resultsContainer.find('li[id=liTypeaheadSelected-' + termToBeDeletedValue + ']').remove();
             $resultsContainer.find('#selectTypeaheadFormResults option[value="'+termToBeDeletedValue+'"]').remove();
             if($resultsContainer.find('#selectTypeaheadFormResults option').length === 0) {
-                $queryInput.removeClass('hide');
+                $queryInput.show();
             }
         });
 
@@ -223,9 +236,5 @@
             };
         }
     };
-
-    if (typeof exports === 'object') {
-        module.exports = $.fn;
-    }
-})();
+});
 
