@@ -1,8 +1,8 @@
 {
   "name": "typeio",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
-  "main": "src/typeio.js",
+  "main": "dist/typeio.js",
   "scripts": {
     "build": "npm run clean && npm run test && npm run sass && npm run jshint && cp ./src/typeio.js ./dist/typeio.js && uglifyjs ./src/typeio.js > ./dist/typeio.min.js",
     "browserify": "./node_modules/browserify/bin/cmd.js ./src/**.js > ./dist/typeio.min.js",
