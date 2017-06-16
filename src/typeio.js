@@ -156,7 +156,7 @@ function exportDependencies(jQuery, typeahead){
             if (options.mode !== 'inline-single-select') {
                 $resultsContainer.append('<ul data-tt-'+$queryInput.attr('id')+' id="ulTypeaheadResults"></ul>');
             }
-            $resultsContainer.append('<select aria-hidden="true" style="display:none;" multiple data-tt-'+ $queryInput.attr('id')+' id="selectTypeaheadFormResults" name="'+options.name+'"></select>');
+            $resultsContainer.append('<select aria-hidden="true" style="display:none;" multiple data-tt-'+ $queryInput.attr('id')+' id="select_' + options.name + '_TypeaheadFormResults" name="'+options.name+'"></select>');
         }
 
         $resultsContainer.on('click','a.typeahead-remove-selected-term', function (event) {
