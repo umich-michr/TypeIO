@@ -116,7 +116,7 @@ describe('MICHR Typeahead Tests', function() {
 
         expect($(options.resultsContainer).hasClass('tt-added-results')).toBe(true);
         expect($(options.resultsContainer).html()).toContain('<ul data-tt-texttypeahead="" id="ulTypeaheadResults">');
-        expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="selectTypeaheadFormResults" name="name">');
+        expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="select_name_Selected" name="name">');
         expect($(options.resultsContainer).html()).toContain('Remove');
         expect($(options.resultsContainer).html()).toContain('<li id="liTypeaheadSelected-initValue"><span class="display-text">initText</span>');
         expect($(options.resultsContainer).html()).toContain('<option selected="" value="initValue"></option>');
@@ -138,7 +138,7 @@ describe('MICHR Typeahead Tests', function() {
         expect($(options.resultsContainer).hasClass('tt-added-results')).toBe(true);
         expect($('#textTypeahead').is(':visible')).toBe(false);
         expect($(options.resultsContainer).html()).toContain('<ul data-tt-texttypeahead="" id="ulTypeaheadResults">');
-        expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="selectTypeaheadFormResults" name="name">');
+        expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="select_name_Selected" name="name">');
         expect($(options.resultsContainer).html()).toContain('Change');
         expect($(options.resultsContainer).html()).toContain('<li id="liTypeaheadSelected-initValue"><span class="display-text">initText</span>');
         expect($(options.resultsContainer).html()).toContain('<option selected="" value="initValue"></option>');
