@@ -21,10 +21,10 @@ npm install typeio
 
 **Using good old js tags**
 ```
-<script src="jquery.min.js"></script>
-<script src="typeahead.jquery.min.js"></script>
-<script src="typeio.js"></script>
-<link rel="stylesheet" href="assets/styles-for-all.css" media="screen"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.1.1/typeahead.jquery.min.js"></script>
+<script src="dist/typeio.js"></script>
+<link rel="stylesheet" href="dist/assets/styles/typeio-styles.css" media="screen"/>
 ```
 
 # Documentation
@@ -184,7 +184,7 @@ If the user wants to provide their own function instead, the `customMatcher` opt
 
 ### Under The Hood
 
-TypeIO uses a resultsContainer that the user provides to store results. The container can be any block element with an id attribute. Inside of the container, TypeIO creates two elements, a visible *<ul>*, and an invisible *<select>*. The *<ul>* is used to hold the visible results that the user sees. The *<select>* holds the same selected data, but is invisible and is added to support form submissions. The example below shows how TypeIO renders in the background (markup) two results selected - Arizona and Massachusetts:
+TypeIO uses a resultsContainer that the user provides to store results. The container can be any block element with an id attribute. Inside of the container, TypeIO creates two elements, a visible *&lt;ul&gt;*, and an invisible *&lt;select&gt;*. The *&lt;ul&gt;* is used to hold the visible results that the user sees. The *&lt;select&gt;* holds the same selected data, but is invisible and is added to support form submissions. The example below shows how TypeIO renders in the background (markup) two results selected - Arizona and Massachusetts:
 
 ```
 <div id="resultsContainer">
