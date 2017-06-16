@@ -8,7 +8,7 @@ function exportDependencies(jQuery, typeahead){
 (function(root, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define('typeio', [ 'jquery', 'typeahead.jquery' ], function(jQuery, typeahead) {
+        define('typeio', [ 'jquery', 'typeahead.js' ], function(jQuery, typeahead) {
             exportDependencies(jQuery,typeahead);
             return factory(jQuery);
         });
