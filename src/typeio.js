@@ -163,8 +163,8 @@ function exportDependencies(jQuery, typeahead){
             var anchorId = event.currentTarget.id;
             var termToBeDeletedValue = anchorId.substring(anchorId.indexOf('-')+1);
             $resultsContainer.find('li[id=liTypeaheadSelected-' + termToBeDeletedValue + ']').remove();
-            $resultsContainer.find('#selectTypeaheadFormResults option[value="'+termToBeDeletedValue+'"]').remove();
-            if($resultsContainer.find('#selectTypeaheadFormResults option').length === 0) {
+            $resultsContainer.find('select[id$="_Selected"] option[value="'+termToBeDeletedValue+'"]').remove();
+            if($resultsContainer.find('select[id$="_Selected"] option').length === 0) {
                 $queryInput.show();
             }
         });
@@ -211,7 +211,7 @@ function exportDependencies(jQuery, typeahead){
                 matches = [];
                 var typeaheadSelectedTermValues = [];
 
-                $.each($resultsContainer.find('#selectTypeaheadFormResults option'), function(index, result){
+                $.each($resultsContainer.find('select[id$="_Selected"] option'), function(index, result){
                     typeaheadSelectedTermValues.push(result.value);
                 });
                 if (options.matcherType === 'startsWith') {
