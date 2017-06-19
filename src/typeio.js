@@ -83,7 +83,7 @@ function exportDependencies(jQuery, typeahead){
 
         }
 
-        $queryInput.typeahead(options, datasets);
+        var typeio = $queryInput.typeahead(options, datasets);
 
         $queryInput.bind('typeahead:select', makeSelection);
 
@@ -235,6 +235,8 @@ function exportDependencies(jQuery, typeahead){
                 callback(matches);
             };
         }
+
+        return typeio;
     };
 });
 
