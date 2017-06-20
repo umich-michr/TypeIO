@@ -124,7 +124,7 @@ Please see below the additional options that TypeIO supports:
 | matcher| if the customMatcher option is set to *true*, the user can use the matcher option to provide a custom matcher function.|The default matcher function is shown in the *Suggestion Matching* section below|
 | matcherType| if the default suggestion matcher function is used for autocomplete functionality, the user can specify one of three modes: `contains`,`startsWith`, or `endsWith`| contains|
 | source| an array of objects with `text` and `value` attributes| |
-
+| selectedTermRemovedCallback| a call back function when a selected term is removed from the result. It takes the removed term as the parameter||
 ### Datasets
 
 The plugin takes one or more data set parameters. These are working exactly the way one would expect them to work in Twitter's typeahead (more info [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets).) *display* and *source* attributes are required as part of a data-source object.

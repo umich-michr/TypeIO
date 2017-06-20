@@ -33,7 +33,8 @@
                         highlight: true,
                         minLength: 1,
                         name: 'countries',
-                        resultsContainer:'#divCountryResults'
+                        resultsContainer:'#divCountryResults',
+                        selectedTermRemovedCallback: function(removedSelectedTerm) {console.log(removedSelectedTerm);}
                     },
                     {
                         limit:10,

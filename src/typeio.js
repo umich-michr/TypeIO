@@ -167,7 +167,17 @@ function exportDependencies(jQuery, typeahead){
             if($resultsContainer.find('select[id$="_Selected"] option').length === 0) {
                 $queryInput.show();
             }
+
+            var selectedTermRemovedCallback = options.selectedTermRemovedCallback;
+            if(isFunction(selectedTermRemovedCallback)) {
+                selectedTermRemovedCallback(termToBeDeletedValue);
+            }
         });
+
+        function isFunction(functionToCheck) {
+            var getType = {};
+            return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+        }
 
         $queryInput.bind('keyup', function(event) {
             var selectables = $(this).siblings('.tt-menu').find('.tt-selectable');
