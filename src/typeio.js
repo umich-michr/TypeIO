@@ -246,6 +246,7 @@ function exportDependencies(jQuery, typeahead){
             };
         }
 
+        typeio.makeSelection = makeSelection;
         return typeio;
     };
 });

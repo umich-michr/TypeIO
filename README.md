@@ -31,7 +31,7 @@ npm install typeio
 
 ### API
 
-### typeIO(options, [\*datasets])
+#### typeIO(options, [\*datasets])
 **Usage:**
 toggle hides/shows results container
 ```
@@ -47,20 +47,20 @@ $('#inputUsedForTypeIO').typeIO({
 });
 ```
 
-### typeIO('clearResultsContainer')
+#### typeIO('clearResultsContainer')
 **Usage:**
 Removes all selected results.
 ```
 $('#inputUsedForTypeIO').typeIO('clearResultsContainer');
 ```
 
-### typeIO('toggleResultsContainerVisibility')
+#### typeIO('toggleResultsContainerVisibility')
 **Usage:**
 toggle hides/shows results container
 ```
 $('#inputUsedForTypeIO').typeIO('toggleResultsContainerVisibility');
 ```
-### typeIO('toggleDisabledResultsContainer')
+#### typeIO('toggleDisabledResultsContainer')
 **Usage:**
 toggle disable/enable results container
 ```
@@ -68,7 +68,7 @@ $('#inputUsedForTypeIO').typeIO('toggleDisabledResultsContainer');
 ```
 
 
-### Initialization
+#### Initialization
 
 In order to initialize TypeIO, provide `input[type="text"]` and an optional `results container` block element (e.g. div.) In the example below, the typeIO plugin is initialized using an input field with an id=exampleInput and a results container with id=divResults
 
@@ -103,6 +103,41 @@ $('#exampleInput').typeIO({
 ```
 
 The first argument to the plugin are the `options`, followed by `data sources`. TypeIO supports additional options, such as `resultsContainer`, among others, which makes it possible to support multiple selections.
+
+#### makeSelection(event, suggestion)
+**Usage:**
+Programmatically select items. **suggestion** parameter is the item you want to select. It must be in the same format as the data you pass in source.
+
+Markup
+```
+<!DOCTYPE html>
+<html>
+    ...
+    <body>
+        ...
+        <div id="divResults"></div>
+        <input type="text" id="exampleInput" />
+        ...
+    <body>
+<html>
+
+```
+
+JS Code
+```
+var exampleTypeIO = $('#exampleInput').typeIO({
+    minLength: 10,
+    highlight: true,
+    resultsContainer:'#divResults',
+    name: 'States'
+},
+{
+    display: 'text',
+    source: [{text:'Michigan', value:'MI'}, {text:'New York', value:'NY'}]
+});
+exampleTypeIO.makeSelection(null, {text: 'Michigan', value: 'MI'});
+```
+This will programmatically select **Michigan**
 
 ### Demo
 
