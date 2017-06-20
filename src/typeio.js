@@ -246,7 +246,13 @@ function exportDependencies(jQuery, typeahead){
             };
         }
 
-        typeio.makeSelection = makeSelection;
+        function selectItem(item) {
+            $queryInput.typeahead('val', item);
+            var e = $.Event('keydown');
+            e.which = 13;
+            $queryInput.trigger(e);
+        }
+        typeio.selectItem = selectItem;
         return typeio;
     };
 });
