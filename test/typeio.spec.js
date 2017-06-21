@@ -1,4 +1,4 @@
-describe('MICHR Typeahead Tests', function() {
+describe('TypeIO Tests', function() {
     global.jQuery = global.$ = require('jquery');
     require('../src/typeio.js');
 
@@ -140,6 +140,32 @@ describe('MICHR Typeahead Tests', function() {
         expect($(options.resultsContainer).html()).toContain('<ul data-tt-texttypeahead="" id="ulTypeaheadResults">');
         expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="select_name_Selected" name="name">');
         expect($(options.resultsContainer).html()).toContain('Change');
+        expect($(options.resultsContainer).html()).toContain('<li id="liTypeaheadSelected-initValue"><span class="display-text">initText</span>');
+        expect($(options.resultsContainer).html()).toContain('<option selected="" value="initValue"></option>');
+    });
+
+    it('Test selectItem - not initialize error', function() {
+        expect( function(){ $('#textTypeahead').selectItem('text'); } ).toThrow('You must initialize your input first. Please refer to the API document on how to initialize typeio');
+    });
+
+    it('Test selectItem - success', function() {
+        var options = {
+            resultsContainer: '#divResultContainer',
+            name: 'name',
+            initialResults: [{value: 'initValue', text: 'initText'}]
+        };
+        var dataset = {
+            display: 'text',
+            source: [{value: 'value', text: 'text'}]
+        };
+        $('#textTypeahead').typeIO(options, dataset);
+
+        $('#textTypeahead').selectItem('text');
+
+        expect($(options.resultsContainer).hasClass('tt-added-results')).toBe(true);
+        expect($(options.resultsContainer).html()).toContain('<ul data-tt-texttypeahead="" id="ulTypeaheadResults">');
+        expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="select_name_Selected" name="name">');
+        expect($(options.resultsContainer).html()).toContain('Remove');
         expect($(options.resultsContainer).html()).toContain('<li id="liTypeaheadSelected-initValue"><span class="display-text">initText</span>');
         expect($(options.resultsContainer).html()).toContain('<option selected="" value="initValue"></option>');
     });

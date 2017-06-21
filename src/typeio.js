@@ -125,7 +125,6 @@ function exportDependencies(jQuery, typeahead){
         }
 
         function makeSelection(event, suggestion) {
-
             if (options.mode !== 'inline-single-select') {
                 var removeText = 'Remove';
                 if (options.mode === 'single-select') {
@@ -246,14 +245,18 @@ function exportDependencies(jQuery, typeahead){
             };
         }
 
-        function selectItem(item) {
-            $queryInput.typeahead('val', item);
+        return typeio;
+    };
+
+    $.fn.selectItem = function(item) {
+        if($(this).hasClass('tt-input')) {
+            $(this).typeahead('val', item);
             var e = $.Event('keydown');
             e.which = 13;
-            $queryInput.trigger(e);
+            $(this).trigger(e);
+        } else {
+            throw 'You must initialize your input first. Please refer to the API document on how to initialize typeio';
         }
-        typeio.selectItem = selectItem;
-        return typeio;
     };
 });
 

@@ -104,9 +104,10 @@ $('#exampleInput').typeIO({
 
 The first argument to the plugin are the `options`, followed by `data sources`. TypeIO supports additional options, such as `resultsContainer`, among others, which makes it possible to support multiple selections.
 
-#### makeSelection(event, suggestion)
+#### selectItem(item)
 **Usage:**
-Programmatically select items. **suggestion** parameter is the item you want to select. It must be in the same format as the data you pass in source.
+Programmatically select items. **item** parameter is the item you want to select. It must be the ***text*** in your source passed to initialize typeio.
+You must call ***typeIO*** to initialize the input first before calling ***selectItem***
 
 Markup
 ```
@@ -125,7 +126,7 @@ Markup
 
 JS Code
 ```
-var exampleTypeIO = $('#exampleInput').typeIO({
+$('#exampleInput').typeIO({
     minLength: 10,
     highlight: true,
     resultsContainer:'#divResults',
@@ -135,7 +136,7 @@ var exampleTypeIO = $('#exampleInput').typeIO({
     display: 'text',
     source: [{text:'Michigan', value:'MI'}, {text:'New York', value:'NY'}]
 });
-exampleTypeIO.makeSelection(null, {text: 'Michigan', value: 'MI'});
+$('#exampleInput').selectItem('Michigan');
 ```
 This will programmatically select **Michigan**
 

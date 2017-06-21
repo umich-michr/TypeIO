@@ -28,7 +28,7 @@
                         }
                     });
 
-            var countriesTypeIO = $('#inputCountries').typeIO({
+            $('#inputCountries').typeIO({
                         hint: true,
                         highlight: true,
                         minLength: 1,
@@ -51,7 +51,7 @@
                             ].join('\n')
                         }
                     });
-            countriesTypeIO.makeSelection(null, {text: 'China', value: 'CHN'});
+            $('#inputCountries').selectItem('China');
         });
     </script>
 </head>
