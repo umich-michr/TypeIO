@@ -130,8 +130,9 @@ function exportDependencies(jQuery, typeahead){
                 if (options.mode === 'single-select') {
                     removeText = 'Change';
                 }
+                removeText = options.removeText ? options.removeText:removeText;
                 $resultsContainer.find('select[id$="_Selected"]').append('<option selected value="'+suggestion.value+'"></option>');
-                $resultsContainer.find('#ulTypeaheadResults').append('<li id="liTypeaheadSelected-'+suggestion.value+'"><span class="display-text">'+suggestion.text+'</span><a id="aTypeaheadSelected-'+suggestion.value+'"href="javascript: void(0);" class="typeahead-remove-selected-term"><span class="fa fa-close" aria-hidden="true"></span><span class="remove-label">'+removeText+'</span></a></li>');
+                $resultsContainer.find('#ulTypeaheadResults').append('<li id="liTypeaheadSelected-'+suggestion.value+'"><span class="display-text">'+suggestion.text+'</span><a id="aTypeaheadSelected-'+suggestion.value+'" href="javascript: void(0);" class="typeahead-remove-selected-term"><span class="fa fa-close" aria-hidden="true"></span><span class="remove-label">'+removeText+'</span></a></li>');
                 if (options.mode === 'single-select') {
                     $queryInput.hide();
                 }

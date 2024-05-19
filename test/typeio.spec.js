@@ -144,6 +144,29 @@ describe('TypeIO Tests', function() {
         expect($(options.resultsContainer).html()).toContain('<option selected="" value="initValue"></option>');
     });
 
+    it('Test update change/remove text when it is passed as option', function() {
+        var options = {
+            resultsContainer: '#divResultContainer',
+            name: 'name',
+            mode: 'single-select',
+            removeText: 'Updated text',
+            initialResults: [{value: 'initValue', text: 'initText'}]
+        };
+        var dataset = {
+            display: 'text',
+            source: [{value: 'value', text: 'text'}]
+        };
+        $('#textTypeahead').typeIO(options, dataset);
+
+        expect($(options.resultsContainer).hasClass('tt-added-results')).toBe(true);
+        expect($('#textTypeahead').is(':visible')).toBe(false);
+        expect($(options.resultsContainer).html()).toContain('<ul data-tt-texttypeahead="" id="ulTypeaheadResults">');
+        expect($(options.resultsContainer).html()).toContain('<select aria-hidden="true" style="display:none;" multiple="" data-tt-texttypeahead="" id="select_name_Selected" name="name">');
+        expect($(options.resultsContainer).html()).toContain('Updated text');
+        expect($(options.resultsContainer).html()).toContain('<li id="liTypeaheadSelected-initValue"><span class="display-text">initText</span>');
+        expect($(options.resultsContainer).html()).toContain('<option selected="" value="initValue"></option>');
+    });
+
     it('Test selectItem - not initialize error', function() {
         expect( function(){ $('#textTypeahead').selectItem('text'); } ).toThrow('You must initialize your input first. Please refer to the API document on how to initialize typeio');
     });

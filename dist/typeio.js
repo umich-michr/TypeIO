@@ -8,7 +8,7 @@ function exportDependencies(jQuery, typeahead){
 (function(root, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define('typeio', [ 'jquery', 'typeahead.jquery' ], function(jQuery, typeahead) {
+        define('typeio', [ 'jquery', 'typeahead.js' ], function(jQuery, typeahead) {
             exportDependencies(jQuery,typeahead);
             return factory(jQuery);
         });
@@ -83,7 +83,7 @@ function exportDependencies(jQuery, typeahead){
 
         }
 
-        $queryInput.typeahead(options, datasets);
+        var typeio = $queryInput.typeahead(options, datasets);
 
         $queryInput.bind('typeahead:select', makeSelection);
 
@@ -125,14 +125,14 @@ function exportDependencies(jQuery, typeahead){
         }
 
         function makeSelection(event, suggestion) {
-
             if (options.mode !== 'inline-single-select') {
                 var removeText = 'Remove';
                 if (options.mode === 'single-select') {
                     removeText = 'Change';
                 }
-                $resultsContainer.find('#selectTypeaheadFormResults').append('<option selected value="'+suggestion.value+'"></option>');
-                $resultsContainer.find('#ulTypeaheadResults').append('<li id="liTypeaheadSelected-'+suggestion.value+'"><span class="display-text">'+suggestion.text+'</span><a id="aTypeaheadSelected-'+suggestion.value+'"href="javascript: void(0);" class="typeahead-remove-selected-term"><span class="fa fa-close" aria-hidden="true"></span><span class="remove-label">'+removeText+'</span></a></li>');
+                removeText = options.removeText ? options.removeText:removeText;
+                $resultsContainer.find('select[id$="_Selected"]').append('<option selected value="'+suggestion.value+'"></option>');
+                $resultsContainer.find('#ulTypeaheadResults').append('<li id="liTypeaheadSelected-'+suggestion.value+'"><span class="display-text">'+suggestion.text+'</span><a id="aTypeaheadSelected-'+suggestion.value+'" href="javascript: void(0);" class="typeahead-remove-selected-term"><span class="fa fa-close" aria-hidden="true"></span><span class="remove-label">'+removeText+'</span></a></li>');
                 if (options.mode === 'single-select') {
                     $queryInput.hide();
                 }
@@ -140,7 +140,7 @@ function exportDependencies(jQuery, typeahead){
             } else {
                 $queryInput.typeahead('val', '');
                 $queryInput.typeahead('val', suggestion.text);
-                $resultsContainer.find('#selectTypeaheadFormResults').html('<option selected value="'+suggestion.value+'"></option>');
+                $resultsContainer.find('select[id$="_Selected"]').html('<option selected value="'+suggestion.value+'"></option>');
             }
         }
 
@@ -156,18 +156,28 @@ function exportDependencies(jQuery, typeahead){
             if (options.mode !== 'inline-single-select') {
                 $resultsContainer.append('<ul data-tt-'+$queryInput.attr('id')+' id="ulTypeaheadResults"></ul>');
             }
-            $resultsContainer.append('<select aria-hidden="true" style="display:none;" multiple data-tt-'+ $queryInput.attr('id')+' id="selectTypeaheadFormResults" name="'+options.name+'"></select>');
+            $resultsContainer.append('<select aria-hidden="true" style="display:none;" multiple data-tt-'+ $queryInput.attr('id')+' id="select_' + options.name + '_Selected" name="'+options.name+'"></select>');
         }
 
         $resultsContainer.on('click','a.typeahead-remove-selected-term', function (event) {
             var anchorId = event.currentTarget.id;
             var termToBeDeletedValue = anchorId.substring(anchorId.indexOf('-')+1);
             $resultsContainer.find('li[id=liTypeaheadSelected-' + termToBeDeletedValue + ']').remove();
-            $resultsContainer.find('#selectTypeaheadFormResults option[value="'+termToBeDeletedValue+'"]').remove();
-            if($resultsContainer.find('#selectTypeaheadFormResults option').length === 0) {
+            $resultsContainer.find('select[id$="_Selected"] option[value="'+termToBeDeletedValue+'"]').remove();
+            if($resultsContainer.find('select[id$="_Selected"] option').length === 0) {
                 $queryInput.show();
             }
+
+            var selectedTermRemovedCallback = options.selectedTermRemovedCallback;
+            if(isFunction(selectedTermRemovedCallback)) {
+                selectedTermRemovedCallback(termToBeDeletedValue);
+            }
         });
+
+        function isFunction(functionToCheck) {
+            var getType = {};
+            return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+        }
 
         $queryInput.bind('keyup', function(event) {
             var selectables = $(this).siblings('.tt-menu').find('.tt-selectable');
@@ -211,7 +221,7 @@ function exportDependencies(jQuery, typeahead){
                 matches = [];
                 var typeaheadSelectedTermValues = [];
 
-                $.each($resultsContainer.find('#selectTypeaheadFormResults option'), function(index, result){
+                $.each($resultsContainer.find('select[id$="_Selected"] option'), function(index, result){
                     typeaheadSelectedTermValues.push(result.value);
                 });
                 if (options.matcherType === 'startsWith') {
@@ -234,6 +244,19 @@ function exportDependencies(jQuery, typeahead){
                 });
                 callback(matches);
             };
+        }
+
+        return typeio;
+    };
+
+    $.fn.selectItem = function(item) {
+        if($(this).hasClass('tt-input')) {
+            $(this).typeahead('val', item);
+            var e = $.Event('keydown');
+            e.which = 13;
+            $(this).trigger(e);
+        } else {
+            throw 'You must initialize your input first. Please refer to the API document on how to initialize typeio';
         }
     };
 });

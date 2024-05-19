@@ -1,6 +1,6 @@
 {
   "name": "typeio",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
@@ -30,25 +30,35 @@
     }
   ],
   "license": "SEE LICENSE IN LICENSE",
-  "keywords": ["autocomplete", "typeahead", "multiselect", "dropdown", "select", "search", "input", "form"],
+  "keywords": [
+    "autocomplete",
+    "typeahead",
+    "multiselect",
+    "dropdown",
+    "select",
+    "search",
+    "input",
+    "form"
+  ],
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "browserify-istanbul": "^0.2.1",
-    "jasmine-core": "^2.4.1",
-    "jshint": "^2.9.2",
-    "karma": "^1.1.0",
-    "karma-browserify": "^5.0.5",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-coverage": "^1.0.0",
-    "karma-jasmine": "^1.0.2",
-    "karma-junit-reporter": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.1",
+    "browserify": "^17.0.0",
+    "browserify-istanbul": "^3.0.1",
+    "jasmine-core": "^5.1.2",
+    "jshint": "^2.13.6",
+    "karma": "^6.4.3",
+    "karma-browserify": "^8.1.0",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-jasmine": "^5.1.0",
+    "karma-junit-reporter": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4",
     "rimraf": "^2.5.2",
-    "sass": "^0.5.0",
-    "watchify": "^3.7.0"
+    "sass": "^1.77.2",
+    "uglify-js": "^3.17.4",
+    "watchify": "^4.0.0"
   },
   "dependencies": {
-    "jquery": ">=1.7",
+    "jquery": "^3.7.1",
     "typeahead.js": "^0.11.1"
   },
   "repository": {

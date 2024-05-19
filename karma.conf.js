@@ -32,10 +32,10 @@ module.exports = function(config) {
         },
 
         browserify: {
+            debug: true,
             transform: [
-                ['browserify-istanbul', {"instrumenterConfig": {embedSource: true}}]
-            ],
-            debug: true
+               ['browserify-istanbul', { instrumenterConfig: {embedSource: true}}]
+            ]
         },
 
         // test results reporter to use
@@ -68,7 +68,7 @@ module.exports = function(config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['PhantomJS'],
+        browsers: ['ChromeHeadless'],
 
 
         // Continuous Integration mode
@@ -78,5 +78,5 @@ module.exports = function(config) {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
+    });
 };

@@ -20,7 +20,7 @@ $="";
  */
 
 $one-rem:18; //base-font-size in px
-$base-font-size: ($one-rem / 16); //base font size in proportion to default browser font size
+$base-font-size: calc($one-rem / 16); //base font size in proportion to default browser font size
 $base-line-height:1.90; //165%;
 
 // Typographic scale
