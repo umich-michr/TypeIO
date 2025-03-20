@@ -1,6 +1,6 @@
 {
   "name": "typeio",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
@@ -27,6 +27,9 @@
     },
     {
       "name": "Aalap Doshi"
+    },
+    {
+      "name": "Vijay Danda"
     }
   ],
   "license": "SEE LICENSE IN LICENSE",
@@ -43,18 +46,18 @@
   "devDependencies": {
     "browserify": "^17.0.0",
     "browserify-istanbul": "^3.0.1",
-    "jasmine-core": "^5.1.2",
+    "jasmine-core": "^5.6.0",
     "jshint": "^2.13.6",
-    "karma": "^6.4.3",
+    "karma": "^6.4.4",
     "karma-browserify": "^8.1.0",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "^2.2.1",
     "karma-jasmine": "^5.1.0",
     "karma-junit-reporter": "^2.0.1",
     "karma-phantomjs-launcher": "^1.0.4",
-    "rimraf": "^2.5.2",
-    "sass": "^1.77.2",
-    "uglify-js": "^3.17.4",
+    "rimraf": "^6.0.1",
+    "sass": "^1.86.0",
+    "uglify-js": "^3.19.3",
     "watchify": "^4.0.0"
   },
   "dependencies": {

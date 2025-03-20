@@ -214,9 +214,16 @@ function exportDependencies(jQuery, typeahead){
         });
 
         function substringMatcher(terms) {
+            function removeDiacritics(str) {
+                var normalized = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                normalized = normalized.replace(/æ/g, 'ae').replace(/Æ/g, 'AE');
+                normalized = normalized.replace(/œ/g, 'oe').replace(/Œ/g, 'OE');
+                return normalized;
+            }
+
             return function findMatches(query, callback) {
                 var matches, substringRegex;
-                query = escape(query);
+                query = removeDiacritics(escape(query));
                 // an array that will be populated with substring matches
                 matches = [];
                 var typeaheadSelectedTermValues = [];
