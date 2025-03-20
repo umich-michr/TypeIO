@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 // font size in rem and px for fallback
 @mixin font-size($size) {
 	font-size: ($size) + rem;

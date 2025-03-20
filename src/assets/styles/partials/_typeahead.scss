@@ -1,3 +1,8 @@
+@use '../mixins/functions' as *;
+@use '../mixins/variables' as variables;
+@use 'animations';
+@use 'sass:color';
+
 .tt-added-results ul{
   padding-left: 0;
 }
@@ -70,11 +75,11 @@
     padding-left: 0;
     @include margin-bottom(1);
     li{
-      @extend .pulse;
+      @extend  %pulse;
       @include flex-display();
       align-items: center;
       list-style: none;
-      border-bottom:dotted 1px $border-color;
+      border-bottom:dotted 1px variables.$border-color;
       @include word-wrap();
       padding: .25em 0;
       @include font-size(.9);
@@ -88,7 +93,7 @@
         line-height: 120%;
       }
       a{
-        color: $error-font-color;
+        color: variables.$error-font-color;
         margin-left: auto;
         .fa{
           display: none;
@@ -97,7 +102,7 @@
         &:hover{
           text-decoration: none;
           .fa{
-            color: darken($error-font-color,15%);
+            color: color.adjust( variables.$error-font-color , $lightness: -15%);
           }
           .remove-label{
             text-decoration: underline;
@@ -115,7 +120,7 @@
   }
 }
 
-@media screen and (min-width: $md-screen-breakpoint){
+@media screen and (min-width: variables.$md-screen-breakpoint){
     .typeahead-container{
       /******** RESULTS **********/
       //Make the results appear as tags on medium+ screens
@@ -129,14 +134,14 @@
           color: #333333;
           padding: 0.35em 0.56em 0.35em 0.56em;
           margin: 0 .25em 0.25em 0;
-          background-color: $neutral-background-color;
-          border: solid 1px $border-color;
+          background-color: variables.$neutral-background-color;
+          border: solid 1px variables.$border-color;
           display: inline-block;
-          @include border-radius($border-radius);
+          @include border-radius(variables.$border-radius);
           white-space: normal;
           /*By default, the last item is set to not have any border. We do however, want a border for the last item on bigger screens*/
           &:last-child{
-            border-bottom: solid 1px $border-color;
+            border-bottom: solid 1px variables.$border-color;
           }
           a{
             .fa{
@@ -174,14 +179,14 @@
               /*Make the checkbox a block label. Not extending .block-label because you can't in media queries*/
               display: inline-block;
             	padding: .8em .9em;
-            	background-color: $check-radio-background-color;
-            	border:2px solid $check-radio-background-color;
-            	@include border-radius($border-radius);
+            	background-color: variables.$check-radio-background-color;
+            	border:2px solid variables.$check-radio-background-color;
+            	@include border-radius(variables.$border-radius);
             	@include font-size(1);
             	font-weight:normal !important;
             	@include margin-bottom(.25);
               &:hover{
-              	border:2px solid $form-field-focus-border-color;
+              	border:2px solid variables.$form-field-focus-border-color;
               	cursor: pointer;
               }
             }

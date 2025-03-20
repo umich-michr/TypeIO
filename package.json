@@ -1,12 +1,13 @@
 {
   "name": "typeio",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A custom multiselect UI widget based on twitter type ahead plugin",
   "main": "dist/typeio.js",
   "scripts": {
     "build": "npm run clean && npm run test && npm run sass && npm run jshint && cp ./src/typeio.js ./dist/typeio.js && uglifyjs ./src/typeio.js > ./dist/typeio.min.js",
     "browserify": "./node_modules/browserify/bin/cmd.js ./src/**.js > ./dist/typeio.min.js",
-    "clean": "./node_modules/rimraf/bin.js dist/* *.log* ",
+    "clean": "rimraf dist/* *.log* ",
+
     "sass": "mkdir -p dist/assets/styles && sass src/assets/styles/typeio-styles.scss dist/assets/styles/typeio-styles.css",
     "jshint": "./node_modules/jshint/bin/jshint ./src/**",
     "test": "./node_modules/karma/bin/karma start ./karma.conf.js --singleRun=true"

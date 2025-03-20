@@ -243,7 +243,7 @@ function exportDependencies(jQuery, typeahead){
                 // iterate through the pool of strings and for any string that
                 // contains the substring `q`, add it to the `matches` array
                 $.each(terms, function(i, term) {
-                    if (substringRegex.test(term.text)) {
+                    if (substringRegex.test(removeDiacritics(term.text))) {
                         if ($.inArray(String(term.value), typeaheadSelectedTermValues) === -1) {
                             matches.push(term);
                         }
